@@ -1,9 +1,11 @@
 import { AVLBinaryTree } from './trees/AVLBinaryTree';
 import { HashMap } from './Hash/HashMap';
 import { Entry } from './Entry';
+import { HashSet } from './Hash/HashSet';
 
 //AVLTreeDisplayExample();
-hashMap();
+//hashMap();
+hashSet();
 
 function AVLTreeDisplayExample(): void {
     let tree = new AVLBinaryTree();
@@ -36,5 +38,37 @@ function hashMap(): void {
     hashMap.print();
     console.log(hashMap.size());
     console.log(hashMap.getKeys());
+}
+
+function hashSet(): void {
+    let arrNums: Array<number> = [3, 8, 21, 31974, 21, 702, 37];
+    let arrNumsUnion: Array<number> = [3, 21, 31974, 19];
+    let arrNumsAdd: Array<number> = [5, 3, 10, 16];
+    let arrNumsRemove: Array<number> = [702, 10, 98, 3, 21];
+    function hashInt(a: number): number {
+        return Math.round(Math.abs(a));
+    }
+    function hashCompare(a: number, b: number): number {
+        return b - a;
+    }
+    let hashSet1: HashSet<number> = new HashSet(hashInt, hashCompare);
+    let hashSetUnion: HashSet<number>  = new HashSet(hashInt, hashCompare);
+    let hashSetAdd: HashSet<number> = new HashSet(hashInt, hashCompare);
+    let hashSetRemove: HashSet<number> = new HashSet(hashInt, hashCompare);
+    for (let item of arrNums)
+        hashSet1.add(item);
+    for (let item of arrNumsUnion)
+        hashSetUnion.add(item);
+    for (let item of arrNumsAdd)
+        hashSetAdd.add(item);
+    for (let item of arrNumsRemove)
+        hashSetRemove.add(item);
+    console.log(hashSet1.getAll());
+    hashSet1.addAll(hashSetAdd);
+    console.log(hashSet1.getAll());
+    hashSet1.retainAll(hashSetUnion);
+    console.log(hashSet1.getAll());
+    hashSet1.removeAll(hashSetRemove);
+    console.log(hashSet1.getAll());
 }
 

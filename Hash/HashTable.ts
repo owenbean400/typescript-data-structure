@@ -40,9 +40,12 @@ class HashTable<T> {
     getAll(): Array<T> {
         let arr: Array<T> = [];
         let i = 0;
-        while (i < this.arr.length) {
-            for (let j = 0; j < this.arr[i].length; j++)
+        let found = 0;
+        while (i < this.arr.length && found < this.size) {
+            for (let j = 0; j < this.arr[i].length; j++) {
+                found++;
                 arr.push(this.arr[i][j]);
+            }
             i++;
         }
         return arr;
