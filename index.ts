@@ -2,10 +2,12 @@ import { AVLBinaryTree } from './trees/AVLBinaryTree';
 import { HashMap } from './Hash/HashMap';
 import { Entry } from './Entry';
 import { HashSet } from './Hash/HashSet';
+import { radixsort } from './sorts/radix';
 
 //AVLTreeDisplayExample();
 //hashMap();
-hashSet();
+//hashSet();
+radixsorting();
 
 function AVLTreeDisplayExample(): void {
     let tree = new AVLBinaryTree();
@@ -71,4 +73,15 @@ function hashSet(): void {
     hashSet1.removeAll(hashSetRemove);
     console.log(hashSet1.getAll());
 }
+
+function radixsorting() {
+
+    let arr = [7, 231, 508, 243, 858, 62, 21, 212, 30, 73, 18];
+
+    console.log(arr);
+    radixsort(arr);
+    console.log(arr);
+}
+
+
 
